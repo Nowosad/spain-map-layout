@@ -1,0 +1,10 @@
+library(sf)
+med_inc <- read.csv("data/Renta media por persona.csv", stringsAsFactors=FALSE)
+cas <- st_read("data/Comunidades_Autonomas_ETRS89_30N.shp", stringsAsFactors=FALSE)
+med_inc$Codigo <- substring(med_inc$X, 1, 2)
+cas1 <- merge(cas, med_inc, by="Codigo")
+library(wesanderson)
+pal <- wes_palette("Zissou1", 5, type = "discrete")
+plot(cas1[-5,"X2017"], nbreaks=5, breaks="quantile", pal=pal) # dropping the Canaries for now.
+library(tmap)
+tm_shape(cas1[-5,]) + tm_fill("X2017", n=5, style="quantile", pal=pal, title="Income per capita €")
