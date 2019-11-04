@@ -48,9 +48,9 @@ canaries_map = tm_shape(canaries_data) +
 grid.newpage()
 pushViewport(viewport(layout = grid.layout(2, 1,
                                            heights = unit(c(1, main_canaries_ratio), "null"))))
-print(main_map, vp = viewport(layout.pos.row = 1))
 print(canaries_map, vp = viewport(height = main_canaries_ratio, x = 0.3, y = 0.1))
-grid.lines(x = c(0, 1), y = c(0.27, 0.1), gp = gpar(lty = 2))
+print(main_map, vp = viewport(layout.pos.row = 1))
+grid.lines(x = c(0, 1), y = c(0.27, 0.08), gp = gpar(lty = 2))
      
 # save --------------------------------------------------------------------
 dir.create("maps")
@@ -58,7 +58,7 @@ png("maps/01_map.png", width = 600, height = 500)
 grid.newpage()
 pushViewport(viewport(layout = grid.layout(2, 1,
                                            heights = unit(c(1, main_canaries_ratio), "null"))))
-print(main_map, vp = viewport(layout.pos.row = 1))
 print(canaries_map, vp = viewport(height = main_canaries_ratio, x = 0.3, y = 0.1))
-grid.lines(x = c(0, 1), y = c(0.27, 0.1), gp = gpar(lty = 2))
+print(main_map, vp = viewport(layout.pos.row = 1))
+grid.lines(x = c(0, 1), y = c(0.27, 0.08), gp = gpar(lty = 2))
 dev.off()
