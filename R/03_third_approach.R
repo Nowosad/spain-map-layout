@@ -74,9 +74,9 @@ ggsave(gg1, filename = "maps/03_map.png", width = 8.335, height = 6.946, dpi = 7
 
 # save data ---------------------------------------------------------------
 spain_data = select(all_data, Codigo, Texto, Texto_Alt)
-saveRDS(spain_data, "data/spain_data2.rds")
-write_sf(spain_data, "data/spain_data2.gpkg")
+saveRDS(spain_data, "data/spain_data.rds")
+write_sf(spain_data, "data/spain_data.gpkg")
 
-dir.create("data/shp2")
-write_sf(spain_data, "data/shp2/spain_data2.shp")
-zip(zipfile = "data/spain_data2.zip", files = dir("data/shp2", full.names = TRUE), flags = "-j")
+dir.create("data/shp")
+write_sf(spain_data, "data/shp/spain_data.shp")
+zip(zipfile = "data/spain_data.zip", files = dir("data/shp", full.names = TRUE), flags = "-j")
