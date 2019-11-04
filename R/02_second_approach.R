@@ -2,6 +2,9 @@ library(sf)
 library(dplyr)
 library(spData)
 library(tmap)
+library(wesanderson)
+library(lwgeom)
+
 # helper function to move geometries --------------------------------------
 place_geometry = function(geometry, bb, scale_x, scale_y,
                           scale_size = 1) {
@@ -43,7 +46,7 @@ pal = wes_palette("Zissou1", 5, type = "discrete")
 
 # plot --------------------------------------------------------------------
 tm1 = tm_shape(all_data) +
-  tm_polygons("X2017", n = 5, style = "quantile", pal = pal, title="Income per capita €") +
+  tm_polygons("X2017", n = 5, style = "quantile", pal = pal, title = "Income per capita €") +
   tm_shape(canaries_data2_bbox) +
   tm_borders() +
   tm_layout(frame = FALSE)
