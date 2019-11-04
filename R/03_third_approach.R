@@ -45,12 +45,10 @@ all_data = rbind(main_data, canaries_data2)
 pal = wes_palette("Zissou1", n = 5, type = "discrete")
 
 # create breaks -----------------------------------------------------------
-# it includes the lowest value offset
-breaks = classInt::classIntervals(c(min(all_data$X2017 - 1), all_data$X2017),
-                                  n = 5, style = "quantile")
+breaks = classInt::classIntervals(all_data$X2017, n = 5, style = "quantile")
 
 # add breaks to data ------------------------------------------------------
-all_data$X2017_breaks = cut(all_data$X2017, breaks$brks)
+all_data$X2017_breaks = cut(all_data$X2017, breaks$brks, include.lowest = TRUE)
 
 # plot --------------------------------------------------------------------
 my_labels = paste(breaks$brks[-length(breaks$brks)], "-", breaks$brks[-1])
