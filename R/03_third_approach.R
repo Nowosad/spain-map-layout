@@ -9,7 +9,7 @@ library(classInt)
 # helper function to move geometries --------------------------------------
 place_geometry = function(geometry, bb, scale_x, scale_y,
                           scale_size = 1) {
-  output_geometry = (geometry - st_centroid(geometry)) * scale_size +
+  output_geometry = (geometry -st_centroid(st_combine(geometry))) * scale_size +
     st_sfc(st_point(c(
       bb$xmin + scale_x * (bb$xmax - bb$xmin),
       bb$ymin + scale_y * (bb$ymax - bb$ymin)
